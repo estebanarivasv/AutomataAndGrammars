@@ -7,4 +7,4 @@ class Email:
         self.string = string
 
     def get_match(self):
-        return re.findall(pattern, self.string)
+        return re.findall(self.pattern, self.string)

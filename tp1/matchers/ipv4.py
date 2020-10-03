@@ -8,7 +8,7 @@ class Ipv4:
         self.string = string
 
     def get_match(self):
-        return re.findall(pattern, self.string)
+        return re.findall(self.pattern, self.string)
 
     def pattern_validator(self):
         splited_string = string.split(".",)
