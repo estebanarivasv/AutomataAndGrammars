@@ -1,6 +1,6 @@
 ## ***Automata and grammars***
 
-In this repository, Yoel and me made some exercises regarding automata and grammars.
+In this repository, my classmate Yoel and me made some exercises regarding automata and grammars subject for UM.
 
 ### Trabajo Práctico Nº1
 ##### Statement:
