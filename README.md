@@ -3,7 +3,7 @@
 In this repository, my classmate Yoel and me made some exercises regarding automata and grammars subject for UM.
 
 ### Trabajo Práctico Nº1
-##### Statement:
+#### Statement:
 Utilizando el lenguaje de programación Python, construir para cada una de las siguientes
 expresiones, un analizador léxico. El analizador léxico debe recibir como entrada una cadena y
 en la salida definir si reconoce como correcta la cadena de entrada.
