@@ -1,31 +1,27 @@
-from time import sleep
 import re
 
+"""
+    How it works?
+    ?: - any expretion in the pharentesis will match
+    1 - All patterns starting "1"
+    \d - any decimal number
+    \d? - can take a decimal or not
+    2[0-4]\d - match any number starting with 2 and going to (0-5) followed by any decimal number
+    {3} - All patterns matching "(?:\.(?:1?\d\d?|2[0-4]\d|25[0-5]))"
+    \. - matching patterns starting with "."
+    ?= - Matches if $ matches next
+    [^\w.] - will match any character except \w.
+"""
 
-class Ipv4:
+class Ipv4Matcher:
     def __init__(self, string):
-        self.pattern = r"[\d].+[\d].+[\d].+[\d].+"
+        self.pattern = r"(?:1?\d\d?|2[0-4]\d|25[0-5])(?:\.(?:1?\d\d?|2[0-4]\d|25[0-5])){3}(?=$|[^\w.])"
         self.string = string
-
+        
+        
     def get_match(self):
         return re.findall(self.pattern, self.string)
 
-    def pattern_validator(self):
-        splited_string = string.split(".",)
-        max_ipv4 = int(255)
-        if len(splited_string) == 4:
-            print("cantidad de octetos correcta")
-        else:
-            print("cantidad de octetos erronea")
-            sleep(2)
-            exit(0)
-        if int(splited_string[0]) <= max_ipv4 & int(splited_string[1]) <= max_ipv4 & int(splited_string[2]) <= max_ipv4 & int(splited_string[3]) <= max_ipv4:
-            print("passed (0-255)")
-        else:
-            print("the IPV4 entered exceeds the maximum allowed IP values [000.000.000.000-255.255.255.255]")
-            sleep(2)
-            exit(0)
-
-string = "244.244.244.244"
-matcherEmail = Ipv4(string)
-matcherEmail.pattern_validator()
+string = "244.244.244.244\n164.0.15.100"
+matcherEmail = Ipv4Matcher(string)
+print(matcherEmail.get_match())

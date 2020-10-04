@@ -1,30 +1,29 @@
 import re
 
 """
-    Basic  
+    How it works?
     http - All patterns matching "https"
-    s? - Optional
-    ://
-    w{3}
-    \.
-    \w+
-    \.
-    [\w\d:#@%/;$()~_?\+-=\\\.&]*
-
+    s? - Optional char
+    :\/\/ - All patterns matching "://"
+    w{3} - All patterns matching "www"
+    \. - Escaping "."
+    \w+ - All patterns matching any word type characters
+    \. - Escaping "."
+    [\w\d:#@%/;$()~_?\+-=\.&]* - All patterns matching url type characters
+    \s - White space caracter
 """
-
 class UrlMatcher:
     def __init__(self, string):
         self.string = string
-        self.pattern = r'https?://w{3}\.\w+\.[\w\d:#@%/;$()~_?\+-=\\\.&]*'
-        
-        # http o https
-        # mas todo lo que venga
+        self.pattern = r'https?:\/\/w{3}\.\w+\.[\w\d:#@%/;/{3}$()~_?\+-=.&]*[\s]?'
 
     def get_match(self):
         return re.findall(self.pattern, self.string)
+
+    
         
 
-string = "https://www.geeksforgeeks.org/python-check-url-string/\nhttp://www.geeksforgeeks.org/python-check-url-string/"
+
+string = "https://www.geeksforgeeks.org/python-check-url-string/\nhttp://www.geeksforgeeks.org/python-check-url-string/http://www.google.com"
 matcher = UrlMatcher(string)
 print(matcher.get_match())
