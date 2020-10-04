@@ -13,12 +13,12 @@ import re
     \s - White space caracter
 """
 class UrlMatcher:
-    def __init__(self, string):
-        self.string = string
+    def __init__(self, strings_list):
+        self.strings_list = strings_list
         self.pattern = r'https?:\/\/w{3}\.\w+\.[\w\d:#@%/;/{3}$()~_?\+-=.&]*[\s]?'
 
     def get_match(self):
-        return re.findall(self.pattern, self.string)
+        return re.findall(self.pattern, self.strings_list)
 
     
         
