@@ -1,9 +1,7 @@
-from time import sleep
-from termcolor import colored
-from main.matchers import UrlMatcher
-import sys
 import os
-import signal
+from termcolor import colored
+
+from main.matchers import UrlMatcher, EmailMatcher, Ipv4Matcher, PasswordMatcher
 
 
 def clear_screen():
@@ -20,15 +18,13 @@ def get_result(matches):
                            "The following matches have been found: \n", color="green"))
         for match in matches:
             print(colored(text=repr(match), color="green"))
-        print("\n")
     else:
         print(colored(text="-------------------------------------------------------------\n"
                            "We were not able to get any matches.", color="red"))
-        print("\n")
+    input("\n\nPress any key to go back to menu...")
 
 
 def strings_catcher():
-    clear_screen()
     inputs = []
     print("-------------------------------------------------------------"
           "\n\nReading from input..."
@@ -45,10 +41,8 @@ def strings_catcher():
         print(colored(text=repr(string), color='yellow'))
     print("\n")
 
-    princ_string = ""
-    for string in inputs:
-        princ_string = princ_string + string + "\n"
-    return princ_string
+    input("\nContinue...")
+    return inputs
 
 
 def call_url_matcher():
@@ -56,6 +50,7 @@ def call_url_matcher():
         "\nREQUIREMENTS:"
         "\n- Must begin with 'http' or 'https'"
         "\n- Must contain 'www.'"
+        "\n\n"
     )
     inputs = strings_catcher()
     matcher = UrlMatcher(inputs)
@@ -63,14 +58,42 @@ def call_url_matcher():
     get_result(matches)
 
 
-"""
-def call_ipv4_matcher():
-    string = strings_catcher()
-    matcher = Ipv4Matcher(string)
-    match = matcher.get_match
+def call_email_matcher():
+    print(
+        "\nREQUIREMENTS:"
+        "\n- Must contain '@'"
+        "\n- Must contain '.'"
+        "\n\n"
+    )
+    inputs = strings_catcher()
+    matcher = EmailMatcher(inputs)
+    matches = matcher.get_match()
+    get_result(matches)
 
-    if match:
-        print("\n\nPattern Admitted")
-    else:
-        print("\n\nPattern not found")
-"""
+
+def call_ipv4_matcher():
+    print(
+        "\nREQUIREMENTS:"
+        "\n- Must contain from 1 to 3 characters each octet"
+        "\n- Must contain '.'"
+        "\n\n"
+    )
+    inputs = strings_catcher()
+    matcher = Ipv4Matcher(inputs)
+    matches = matcher.get_match()
+    get_result(matches)
+
+
+def call_password_matcher():
+    print(
+        "\nREQUIREMENTS:"
+        "\n- At least one uppercase letter."
+        "\n- At least one lowercase letter."
+        "\n- At least one number."
+        "\n- The minimum length of 8 characters."
+        "\n\n"
+    )
+    inputs = strings_catcher()
+    matcher = PasswordMatcher(inputs)
+    matches = matcher.get_match()
+    get_result(matches)
