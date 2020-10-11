@@ -13,18 +13,16 @@ import re
     [^\w.] - will match any character except \w.
 """
 
+
 class Ipv4Matcher:
-    def __init__(self, string):
+    def __init__(self, strings_list):
         self.pattern = r"(?:1?\d\d?|2[0-4]\d|25[0-5])(?:\.(?:1?\d\d?|2[0-4]\d|25[0-5])){3}(?=$|[^\w.])"
-        self.string = string
-        
-        
+        self.strings_list = strings_list
+        self.matches = []
+
     def get_match(self):
-        return re.findall(self.pattern, self.string)
-
-"""
-string = "244.244.244.244\n164.0.15.100"
-matcherEmail = Ipv4Matcher(string)
-print(matcherEmail.get_match())
-"""
-
+        for string in self.strings_list:
+            match = re.match(self.pattern, string)
+            if match:
+                self.matches.append(match.string)
+        return self.matches

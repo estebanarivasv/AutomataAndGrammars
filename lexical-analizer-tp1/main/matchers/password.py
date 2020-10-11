@@ -2,26 +2,23 @@ import re
 
 """
     How it works?
-    .{8,} - its a "replacement" for scanf(), equivalent of %8c  (8 characteres)
-    ?=    - Matches if .{8,} matches next
-    \d    - any numeber
-    *[a-z] - any letter from a to z
-    *[A-Z] - any letter from A to Z
-    ^ - matches the start of the string
-    $ - matches the end of the string
+    (?=^.{8,}$)  -- Matches if the string is greater than or equal to 8
+    (?=.*\d)  -- Matches if the string contains one or more numbers
+    (?=.*[A-Z])  -- Matches if the string contains one or more uppercase letters
+    (?=.*[a-z])  -- Matches if the string contains one or more lowercase letters
+    .*$  -- Matches any char except line breaks
 """
 
+
 class PasswordMatcher:
-    def __init__(self, string):
-        self.pattern = r"^.*(?=.{8,})(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).*$"
-        self.string = string
+    def __init__(self, strings_list):
+        self.pattern = r"(?=^.{8,}$)(?=.*\d)(?=.*[A-Z])(?=.*[a-z]).*$"
+        self.strings_list = strings_list
+        self.matches = []
 
     def get_match(self):
-        return re.findall(self.pattern, self.string)
-
-
-string = "HOLAho2a"
-matcher = PasswordMatcher(string)
-print(matcher.get_match())
-
-# YA LO TERMINASTE?
+        for string in self.strings_list:
+            match = re.match(self.pattern, string)
+            if match:
+                self.matches.append(match.string)
+        return self.matches

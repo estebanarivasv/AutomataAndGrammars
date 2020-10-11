@@ -16,14 +16,13 @@ import re
 
 class UrlMatcher:
     def __init__(self, strings_list):
-        self.strings_list = strings_list
         self.pattern = r'https?:\/\/w{3}\.\w+\.[\w\d:#@%/;/{3}$()~_?\+-=.&]*'
+        self.strings_list = strings_list
+        self.matches = []
 
     def get_match(self):
-        return re.findall(self.pattern, self.strings_list)
-
-"""
-string = "https://www.geeksforgeeks.org/python-check-url-string/\nhttp://www.geeksforgeeks.org/python-check-url-string/http://www.google.com"
-matcher = UrlMatcher(string)
-print(matcher.get_match())
-"""
+        for string in self.strings_list:
+            match = re.match(self.pattern, string)
+            if match:
+                self.matches.append(match.string)
+        return self.matches
