@@ -1,3 +1,5 @@
+"""
+
 import menu
 
 if __name__ == '__main__':
@@ -21,3 +23,15 @@ if __name__ == '__main__':
                 print("Wrong input. Try again.")
         except ValueError:
             print("Wrong input. Try again.")
+
+"""
+from views.main_view import MainWindow
+from PyQt5.QtWidgets import QApplication
+
+if __name__ == '__main__':
+    app = QApplication([])
+
+    window = MainWindow()
+    window.show()
+
+    app.exec_()
