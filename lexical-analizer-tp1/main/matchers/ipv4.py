@@ -22,6 +22,9 @@ class Ipv4Matcher:
     def get_match(self):
         return re.findall(self.pattern, self.string)
 
+"""
 string = "244.244.244.244\n164.0.15.100"
 matcherEmail = Ipv4Matcher(string)
 print(matcherEmail.get_match())
+"""
+
