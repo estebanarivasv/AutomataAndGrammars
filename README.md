@@ -1,6 +1,6 @@
 ## ***Automata and grammars***
 
-In this repository, my classmate Yoel and me made some exercises regarding automata and grammars subject for UM.
+In this repository, my classmate Yoel and I present some exercises regarding Automata and Grammars Subject for my university UM.
 
 ### Trabajo Práctico Nº1
 #### Statement:
@@ -23,7 +23,7 @@ import re
 print("Validar extensión de imagen")
 ext = input("Ingrese una extensión de una imagen: ")
 if re.match('jpg|png|gif|bmp', ext):
- print('La extensión ', ext, 'se corresponde con una imagen')
+    print('La extensión ', ext, 'se corresponde con una imagen')
 else:
- print('La extensión ', ext, 'no se corresponde con una imagen')
+    print('La extensión ', ext, 'no se corresponde con una imagen')
 ```
