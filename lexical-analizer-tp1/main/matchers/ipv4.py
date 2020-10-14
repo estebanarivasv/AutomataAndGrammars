@@ -2,15 +2,16 @@ import re
 
 """
     How it works?
-    ?: - any expretion in the pharentesis will match
+    ?: - Matches whatever regular expression is inside the parentheses
     1 - All patterns starting "1"
     \d - any decimal number
     \d? - can take a decimal or not
-    2[0-4]\d - match any number starting with 2 and going to (0-5) followed by any decimal number
+    2[0-5]\d - match any number starting with 2 and going to (0-5) followed by any decimal number
     {3} - All patterns matching "(?:\.(?:1?\d\d?|2[0-4]\d|25[0-5]))"
     \. - matching patterns starting with "."
     ?= - Matches if $ matches next
     [^\w.] - will match any character except \w.
+    \w Matches Unicode word characters
 """
 
 
