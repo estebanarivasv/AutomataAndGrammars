@@ -1,5 +1,5 @@
-### Trabajo Práctico Nº1
-#### Actividad:
+## Trabajo Práctico Nº1
+### Actividad:
 Utilizando el lenguaje de programación Python, construir para cada una de las siguientes
 expresiones, un analizador léxico. El analizador léxico debe recibir como entrada una cadena y
 en la salida definir si reconoce como correcta la cadena de entrada.
@@ -7,7 +7,7 @@ en la salida definir si reconoce como correcta la cadena de entrada.
 2. URL (http-https://www…..)
 3. Dirección IPv4 (000.000.000.000-255.255.255.255)
 4. Contraseña segura*
-#### *Se considera contraseña segura a una contraseña que cumpla con las siguientes condiciones:
+##### *Se considera contraseña segura a una contraseña que cumpla con las siguientes condiciones:
 - Que contengan al menos una letra mayúscula.
 - Que contengan al menos una letra minúscula.
 - Que Contengan al menos un número.
