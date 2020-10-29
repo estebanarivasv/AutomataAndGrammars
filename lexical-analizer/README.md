@@ -25,13 +25,12 @@ else:
     print('La extensión ', ext, 'no se corresponde con una imagen')
 ```
 
-### Requirements to have ***lexical-analizer*** running
-#### Windows:
+## Requirements to have ***lexical-analizer*** running
+### Windows:
 - Create ```venv``` in ```../lexical-analizer-tp1/```
 - Install ```requirements.txt```
 - Run ```app.py```
 
-#### Unix:
+### Unix:
 - Run ```./install.sh```
 - Run ```./boot.sh```
-<
