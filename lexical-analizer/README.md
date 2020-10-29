@@ -24,7 +24,7 @@ else:
     print('La extensión ', ext, 'no se corresponde con una imagen')
 ```
 
-### Requirements to have ***lexical-analizer-tp1*** running
+### Requirements to have ***lexical-analizer*** running
 #### Windows:
 - Create ```venv``` in ```../lexical-analizer-tp1/```
 - Install ```requirements.txt```
