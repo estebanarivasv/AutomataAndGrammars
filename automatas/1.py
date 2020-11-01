@@ -1,107 +1,76 @@
 from termcolor import colored, cprint
 
-state_inputs = [
-    # STATE A
-    {"a": "B", "b": "C", "": "ACCEPT"},
-    # STATE B
-    {"a": "B", "b": "C", "": "ACCEPT"},
-    # STATE C
-    {"a": "B", "b": "C", "": "ACCEPT"},
-    # REJECT STATE
-    "",
-    # ACCEPT STATE
-    ""
-]
-
 # (a|b)*
 
+# We define the movements for each state given certain inputs.
+state_inputs = [
+    {"name": "state A", "a": "B", "b": "C", "finish": "accepting state", "error": "rejecting state"},
+    {"name": "state B", "a": "B", "b": "C", "finish": "accepting state", "error": "rejecting state"},
+    {"name": "state C", "a": "B", "b": "C", "finish": "accepting state", "error": "rejecting state"}
+]
 
+
+def print_actual_letter(char):
+    if char != "":
+        cprint(f"Actual letter from list: {letter}", "yellow")
+
+
+def print_status(actual_state, next_state):
+    if next_state == "accepting state":
+        print(f"\nMove from state {actual_state} to {next_state}.")
+        cprint("The introduced string was correct.", "green")
+    elif next_state == "rejecting state":
+        print(f"\nMove from state {actual_state} to {next_state}.")
+        cprint("The introduced string was invalid.", "red")
+    else:
+        print(f"\nMove from state {actual_state} to {next_state}.")
+
+
+# This function defines the next state to be accessed given a certain value
 def index_changer(next_state):
     if next_state == "B":
         return 1
     elif next_state == "C":
         return 2
-    elif next_state == "REJECT":
-        return 3
-    elif next_state == "ACCEPT":
-        return 4
+
 
 if __name__ == "__main__":
 
-    test_str = input(colored("\nENTER STRING TO TEST>>>>: ", "cyan"))
+    test_str = input(colored("\nEnter the string to test\n>>>  ", "cyan"))
 
-    # Conversion de cadena a lista
+    # String to list conversion
     char_list = list(test_str)
+    # We add "" at the end to get to the acceptance state
     char_list.append("")
 
-    state_index = 0         
+    # This variable will be modified as the program runs. We begin in state A
+    state_index = 0
+
     for letter in char_list:
-        state_dict = state_inputs[state_index]
+        # We define the actual state
+        actual = state_inputs[state_index]
 
-        # Estado inicial A
-        if state_index == 0:
-            if letter != "":
-                cprint(f"letra actual: {letter}", "yellow")
-            if letter == "a":
-                state_index = index_changer(state_dict['a'])  # state_dict['a'] devuelve el estado siguiente danda una entrada "a" (B)
-                print(f"Moviendo de estado A a estado {state_dict['a']}")
-                
-            elif letter == "b":
-                state_index = index_changer(state_dict['b'])    # state_dict['a'] devuelve el estado siguiente danda una entrada "b" (C)
-                print(f"Moviendo de estado A a estado {state_dict['b']}")
+        print_actual_letter(letter)
 
-            # Estado final de aceptacion
-            elif letter == "":
-                print(f"Moviendo de estado A a estado final de aceptacion.")
-                cprint("\nCORRECT STRING.", "green")
-                
-             # Estado final de rechazo
-            else:
-                state_index = index_changer("REJECT")
-                print(f"Moviendo de estado A a estado final de rechazo.")
+        if letter == "a":
+            state_index = index_changer(actual['a'])
+            # index_changer sets the following state given an input "a" defined in dict "state"
+            print_status(actual['name'], actual['a'])
+            # Given an input "b", the program stops and enters to the next state
 
-        # Estado B
-        elif state_index == 1:
-            if letter != "":
-                cprint(f"letra actual: {letter}", "yellow")
-            if letter == "a":
-                state_index = index_changer(state_dict['a'])  # state_dict['a'] devuelve el estado siguiente danda una entrada "a" (B)
-                print(f"Moviendo de estado B a estado {state_dict['a']}")
-                
-            elif letter == "b":
-                state_index = index_changer(state_dict['b'])    # state_dict['a'] devuelve el estado siguiente danda una entrada "b" (C)
-                print(f"Moviendo de estado B a estado {state_dict['b']}")
+        elif letter == "b":
+            state_index = index_changer(actual['b'])
 
-            # Estado final de aceptacion
-            elif letter == "":
-                print(f"Moviendo de estado B a estado final de aceptacion.")
-                cprint("\nCORRECT STRING.","green")
+            print_status(actual['name'], actual['b'])
+            # Given an input "b", the program stops and enters to the next state
 
-            else:
-                state_index = index_changer("REJECT")
-                print(f"Moviendo de estado B a estado final de rechazo")
-
-        # Estado C
-        elif state_index == 2:
-            if letter != "":
-                cprint(f"letra actual: {letter}", "yellow")
-            if letter == "a":
-                state_index = index_changer(state_dict['a'])  # state_dict['a'] devuelve el estado siguiente danda una entrada "a" (B)
-                print(f"Moviendo de estado C a estado {state_dict['a']}")
-                
-            elif letter == "b":
-                state_index = index_changer(state_dict['b'])    # state_dict['a'] devuelve el estado siguiente danda una entrada "b" (C)
-                print(f"Moviendo de estado C a estado {state_dict['b']}")
-
-            # Estado final de aceptacion
-            elif letter == "":
-                print(f"Moviendo de estado C a estado final de aceptacion.")
-                cprint("\nCORRECT STRING.","green")
-
-            else:
-                state_index = index_changer("REJECT")
-                print(f"Moviendo de estado C a estado final de rechazo")
-
-        elif state_index == 3:  # REJECT STATE
-            cprint("\nINVALID STRING.","red")
+        elif letter == "":
+            print_status(actual['name'], actual['finish'])
             break
+            # Given an input "", the program stops and enters to the accepting state
+
+        else:
+            print_status(actual['name'], actual['error'])
+            break
+            # Given an input different that the admitted characters, it will raise an error.
+            # The program stops and enters to the rejecting state
