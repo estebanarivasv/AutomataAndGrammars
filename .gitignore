@@ -1,10 +1,10 @@
 .vscode
 .idea
 **/__pycache__
-/lexical-analizer-tp1/pyvenv.cfg
-/lexical-analizer-tp1/share/
-/lexical-analizer-tp1/lib64
-/lexical-analizer-tp1/lib/
-/lexical-analizer-tp1/bin/
-/lexical-analizer-tp1/.idea/
-/lexical-analizer-tp1/include/
+**/pyvenv.cfg
+**/share/
+**/lib64
+**/lib/
+**/bin/
+**/.idea/
+**/include/
