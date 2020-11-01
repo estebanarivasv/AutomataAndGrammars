@@ -1,0 +1,2 @@
+from main.models.exercise_1_automata import ExerciseOneAutomata
+from main.models.exercise_2_automata import ExerciseTwoAutomata
