@@ -1,27 +1,11 @@
 import os
 from termcolor import colored
 
-from main.turing_machines import bin_replacer
-
-
 def clear_screen():
     if os.name == "posix":
         os.system('clear')
     else:
         os.system('cls')
-
-
-def get_result(matches):
-    clear_screen()
-    if matches:
-        print(colored(text=f"-------------------------------------------------------------\n"
-                           "The following matches have been found: \n", color="green"))
-        for match in matches:
-            print(colored(text=repr(match), color="green"))
-    else:
-        print(colored(text="-------------------------------------------------------------\n"
-                           "We were not able to get any matches.", color="red"))
-    input("\n\nPress any key to go back to menu...")
 
 
 def string_catcher():
