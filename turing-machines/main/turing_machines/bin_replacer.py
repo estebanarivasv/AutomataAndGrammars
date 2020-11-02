@@ -1,0 +1,3 @@
+
+class BinaryReplacer:
+    pass
