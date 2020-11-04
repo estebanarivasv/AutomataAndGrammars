@@ -1,6 +1,8 @@
 import os
 from termcolor import colored
 
+from main.turing_machines import BinaryParityTester, BinaryReplacer
+
 def clear_screen():
     if os.name == "posix":
         os.system('clear')
@@ -26,6 +28,11 @@ def call_bin_replacer():
         "\n\n"
     )
     str_input = string_catcher()
+    # The turing machine must change the ones for zeroes or viceversa
+    tm = BinaryReplacer()
+    tm.set_input(str_input)
+    tm.current = "qWrite0"  # Set as initial state
+    tm.run_tm()
 
 
 def call_parity_tester():
@@ -36,3 +43,8 @@ def call_parity_tester():
         "\n\n"
     )
     str_input = string_catcher()
+    tm = BinaryParityTester()
+    tm.set_input(str_input)
+    tm.current = "qEven"  # Set as initial state
+    tm.run_tm()
+
