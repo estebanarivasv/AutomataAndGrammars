@@ -8,3 +8,5 @@ Programe en Python los siguientes autómatas:
 1. (a|b)*
 2. (aa|b)*(a|bb)*
 ```
+
+Authors: RIVAS, Esteban; FERNANDEZ, Yoel
