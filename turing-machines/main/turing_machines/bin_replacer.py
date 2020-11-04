@@ -6,18 +6,16 @@ from terminaltables import SingleTable
     Syntax:     states = [Dict, Dict, ..., Dict]
 
     Each state will have:
-    {"name": "qWrite0",
+    {"name": "",
      "inputs":  {
-                 "0": "qWrite0",
-                 "1": "qWrite1"
                 },
-     "write": "0",
-     "move": "R"},
+     "write": "",
+     "move": ""},       Right or Left
 
 """
 
 
-class TuringMachine:
+class BinaryReplacer:
     name = "Binary replacer"
     states = [
         # qWrite0 - Writes a 0
@@ -73,7 +71,6 @@ class TuringMachine:
 
     """
     This function recieves the char and changes the state
-
     """
 
     def read_input(self, char):
@@ -111,10 +108,6 @@ class TuringMachine:
             pass
 
     def run_tm(self):
-        """
-        1 - Estado actual recibe entrada y cambia de estado
-        2 - Estado cambiado escribe en cinta
-        """
 
         while not self.tape[self.control_position] == "" and self.reject is False:
             char = self.tape[self.control_position]
@@ -130,11 +123,3 @@ class TuringMachine:
             cprint(f"\nqAccept reached", "yellow")
             self.print_tape()
             print("\n\n---------------------------------------------------------------\n\n")
-
-
-if __name__ == '__main__':
-    # The turing machine must change the ones for zeroes or viceversa
-    tm = TuringMachine()
-    tm.set_input("00110000101")
-    tm.current = "qWrite0"  # Set as initial state
-    tm.run_tm()
