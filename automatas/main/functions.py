@@ -10,7 +10,7 @@ def print_actual_letter(letter):
 
 def print_status(actual_state, next_state):
     if next_state == "accepting state":
-        print(f"Move from state {actual_state} to {next_state}.")
+        print(f"Move from {actual_state} to {next_state}.")
         cprint("The introduced string was correct.", "green")
     elif next_state == "rejecting state":
         print(f"Move from state {actual_state} to {next_state}.")
