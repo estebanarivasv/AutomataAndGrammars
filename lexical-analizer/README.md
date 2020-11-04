@@ -24,6 +24,7 @@ if re.match('jpg|png|gif|bmp', ext):
 else:
     print('La extensión ', ext, 'no se corresponde con una imagen')
 ```
+Authors: RIVAS, Esteban; FERNANDEZ, Yoel
 
 ## Requirements to have ***lexical-analizer*** running
 ### Windows:
