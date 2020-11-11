@@ -1,4 +1,4 @@
-from termcolor import colored, cprint
+from termcolor import colored
 
 from main.functions import print_status, print_actual_letter
 
@@ -49,8 +49,8 @@ class ExerciseTwoAutomata:
 
     def test_input(self):
         # This variable will be modified as the program runs. We begin in state A
-
         self.state_index = 0
+
         for letter in self.input_list:
             # We define the actual state
             self.actual = self.state_inputs[self.state_index]
@@ -62,21 +62,17 @@ class ExerciseTwoAutomata:
 
             try:
                 if letter == "a":
-
                     self.state_index = self.index_changer(self.actual['a'])
                     # index_changer sets the following state given an input "a" defined in dict "state"
                     print_status(self.actual['name'], self.actual['a'])
                     # Given an input "b", the program stops and enters to the next state
 
                 elif letter == "b":
-
                     self.state_index = self.index_changer(self.actual['b'])
-
                     print_status(self.actual['name'], self.actual['b'])
                     # Given an input "b", the program stops and enters to the next state
 
                 elif letter == "":
-
                     print_status(self.actual['name'], self.actual['finish'])
                     break
                     # Given an input "b", the program stops and enters to the next state

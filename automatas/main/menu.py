@@ -1,5 +1,5 @@
 import os
-from terminaltables import AsciiTable
+from terminaltables import SingleTable
 
 from main.models import ExerciseOneAutomata, ExerciseTwoAutomata
 
@@ -17,8 +17,9 @@ def call_automata_1():
                   ["A", "B", "C"],
                   ["B", "B", "C"],
                   ["C", "B", "C"]]
-    table = AsciiTable(table_data)
-    print("First, we've developed how the automata work into this resulting table:\n\n", table.table)
+    table = SingleTable(table_data)
+    print("First, we've developed how the automata work into this resulting table:\n\n")
+    print(table.table)
     automata = ExerciseOneAutomata()
     automata.set_input()
     automata.test_input()
@@ -35,8 +36,9 @@ def call_automata_2():
                   ["G", "H", "E"],
                   ["H", "H", "E"]
                   ]
-    table = AsciiTable(table_data)
-    print("First, we've developed how the automata work into this resulting table:\n\n", table.table)
+    table = SingleTable(table_data)
+    print("First, we've developed how the automata work into this resulting table:\n\n")
+    print(table.table)
     automata = ExerciseTwoAutomata()
     automata.set_input()
     automata.test_input()
