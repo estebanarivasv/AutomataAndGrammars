@@ -1,0 +1,1 @@
+from main.services.data_insertion import insert_data_to_db
