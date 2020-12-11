@@ -14,6 +14,20 @@
 </head>
 
 <body>
+    <div class="container-fluid d-flex flex-row-reverse bg-highlight " style="position: absolute;">
+        {% with messages = get_flashed_messages(with_categories=true) %}
+            {% if messages %}
+                {% for category, message in messages %}
+                <div class="alert alert-{{ category }} alert-dismissible fade show my-2 mx-2" role="alert" style="width: 400px;">
+                    {{ message }}
+                    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                </div>
+                {% endfor %}
+            {% endif %}
+        {% endwith %}
+    </div>
+
+
     <h3 class="mt-5 text-center">Users' Wi-Fi connections</h3>
     <div class="row mt-3">
         <div class="col-lg-1"></div>
@@ -40,10 +54,6 @@
                                     </svg>
                                 </div>
                                 {{ filters.username(type="text", class="form-control form-control-sm", id="inlineFormInputGroupUsername",  placeholder="Username")|safe }}
-
-
-
-
                             </div>
                         </div>
                         <div class="col-12">
@@ -74,13 +84,6 @@
                                     </svg>
                                 </div>
                                 {{ filters.datetime(type="text", class="form-control form-control-sm", id="inlineFormInputGroupUsername",  placeholder="Specific date")|safe }}
-                                {% if filters.datetime.errors %}
-                                <div class="container pt-2 px-2 pb-n1 text-danger">
-                                    {% for error in filters.datetime.errors %}
-                                    <h6>{{ error }}</h6><br>
-                                    {% endfor %}
-                                </div>
-                                {% endif %}
                             </div>
                         </div>
                         <div class="col-12">
@@ -97,13 +100,6 @@
                                     </svg>
                                 </div>
                                 {{ filters.ap_mac(type="text", class="form-control form-control-sm", id="inlineFormInputGroupUsername",  placeholder="AP MAC Address")|safe }}
-                                {% if filters.ap_mac.errors %}
-                                <div class="container pt-2 px-2 pb-n1 text-danger">
-                                    {% for error in filters.ap_mac.errors %}
-                                    <h6>{{ error }}</h6><br>
-                                    {% endfor %}
-                                </div>
-                                {% endif %}
                             </div>
                         </div>
                         <div class="col-12">
@@ -120,14 +116,7 @@
                                     </svg>
                                 </div>
                                 {{ filters.client_mac(type="text", class="form-control form-control-sm", id="inlineFormInputGroupUsername",  placeholder="Client MAC Address")|safe }}
-                                {{ filters.client_mac.errors }}
-                                {% if filters.client_mac.errors %}
-                                <div class="container pt-2 px-2 pb-n1 text-danger">
-                                    {% for error in filters.client_mac.errors %}
-                                    <h6>{{ error }}</h6><br>
-                                    {% endfor %}
-                                </div>
-                                {% endif %}
+                                
                             </div>
                         </div>
                         <div class="col-12">
