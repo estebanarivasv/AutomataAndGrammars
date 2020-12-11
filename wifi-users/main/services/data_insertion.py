@@ -7,9 +7,9 @@ load_dotenv()
 DATA_PATH = os.getenv('DATA_PATH')
 
 
-def insert_data_to_db(db):
+def insert_data_to_db(engine):
     dataframe = pd.read_csv(DATA_PATH, sep=';')
     try:
-        dataframe.to_sql(name='Connection', con=db.engine, index=False, index_label="connection_id")
-    except ValueError:
+        dataframe.to_sql(name='Connection', con=engine, index=True, if_exists='append')
+    except Exception:
         pass

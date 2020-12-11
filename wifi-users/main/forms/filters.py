@@ -4,8 +4,6 @@ from wtforms.validators import Regexp
 
 
 class FilterForm(FlaskForm):
-    username = StringField('Username')
-    username_sum = StringField('User to sum the session times')
     datetime = StringField('Datetime', validators=[
         Regexp('\d\d/\d\d/\d\d\d\d \d\d:\d\d', message="Date must be in this format DD/MM/YYYY HH:MM")
     ])
