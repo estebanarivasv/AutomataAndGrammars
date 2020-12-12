@@ -1,3 +1,5 @@
+# Practice statement
+
 TRABAJO FINAL
 
 Para realizar el trabajo final se debe trabajar con el archivo de texto llamado “Usuarios
