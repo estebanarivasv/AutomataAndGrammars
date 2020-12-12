@@ -16,4 +16,4 @@ class Connection(db.Model):
     client_mac = db.Column(db.String(50))
 
     def __repr__(self):
-        return f'<User {self.connection_id}>'
+        return f'<Connection {self.index}>'
