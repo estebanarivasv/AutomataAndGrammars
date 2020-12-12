@@ -1,6 +1,6 @@
 ## ***Automata and grammars***
 
-In this repository are displayed some practice exercises that I did in Automata and Grammars Subject for Universidad de Mendoza.
+In this directory there are displayed some practice exercises.
 
 We've worked with:
 - [Lexical Analyzers](https://github.com/estebanarivasv/automata-and-grammars/tree/master/lexical-analizer)
